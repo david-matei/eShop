@@ -1,9 +1,14 @@
 const ProductOrders = require("../models/product-orders");
 const Product = require("../models/product");
+const stripe = require("stripe")(process.env.STRIPE_PRIVATE_KEY);
 
 // to check if the user ID from the params matches the user ID from the payload of the JWT TOKEN
 // that is stored in the req.user object I already made a middleware that checks for that and also checks
 // the token for presence and validity
+
+const payment = (_req, res) => {
+  res.send("Hello, I am coming soon!");
+};
 
 const postProductOrder = async (req, res) => {
   try {
@@ -42,7 +47,7 @@ const postProductOrder = async (req, res) => {
 
     await productOrder.save();
 
-    res.status(201).json({ message: "Product order created" });
+    res.redirect("/payment");
   } catch (error) {
     res.status(400).json({ Error: error.message });
   }
@@ -102,4 +107,5 @@ module.exports = {
   getSingleOrder,
   deleteOrder,
   updateOrder,
+  payment,
 };

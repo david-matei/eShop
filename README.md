@@ -10,7 +10,7 @@ Read documentation !COMING SOON -> [here]()
 - Clone the repo.
 - Run `npm install` to install dependencies.
 - input environment variables for `MONGO_URI`, `PORT`, `JWT_SECRET`, `REFRESH_TOKEN`, `MAIL_USERNAME`, `MAIL_PASSWORD`, `OAUTH_CLIENTID`,
-  `OAUTH_CLIENT_SECRET`, `OAUTH_REFRESH_TOKEN`.
+  `OAUTH_CLIENT_SECRET`, `OAUTH_REFRESH_TOKEN`, `STRIPE_PRIVATE_TOKEN`
 - enter `npm run dev` in the terminal to start up the development server.
 
 ## Technology

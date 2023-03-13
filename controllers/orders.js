@@ -80,6 +80,7 @@ const getSingleOrder = async (req, res) => {
   }
 };
 // admin only  "Trebuie sa incep sa implementez adimn-only accessibility"
+// implementat!
 const deleteOrder = async (req, res) => {
   try {
     const deleteOrder = await Orders.findOneAndDelete({

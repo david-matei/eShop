@@ -16,6 +16,7 @@ const productOrdersRouter = require("./routes/product-orders");
 const ordersRouter = require("./routes/orders");
 const adminRouter = require("./routes/administrator");
 const refreshToken = require("./routes/refresh-token");
+const payment = require("./routes/payments");
 
 app.use(cookieParser());
 app.use(express.json());
@@ -30,6 +31,7 @@ app.use("/api", productOrdersRouter);
 app.use("/api", ordersRouter);
 app.use("/api", adminRouter);
 app.use("/api", refreshToken);
+app.use("/api", payment);
 app.get("/api/login", (_req, res) => {
   res.send("LOGIN PAGE BROTHER");
 });
