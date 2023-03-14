@@ -2,7 +2,7 @@ const jwt = require("jsonwebtoken");
 
 const adminCheck = (req, res, next) => {
   if (req.user.isAdmin === false) {
-    return res.status(401).send("Unauthorized request");
+    return res.status(401).send("Must be an admin.");
   }
   next();
 };

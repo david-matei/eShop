@@ -13,31 +13,41 @@ const payment = (_req, res) => {
 const postProductOrder = async (req, res) => {
   try {
     const { productIds, quantities } = req.body;
-    // prices nu le iau din req.body
-    // le voi lua din baza de date
-    // todo: modifica codul pentru a lua preturile din Product document
-    const products = await Product.find({ _id: { $in: productIds } }).select(
-      "quantity"
-    );
+    console.log(productIds, quantities);
+    const priceAndQuantity = await Product.find({
+      _id: { $in: productIds },
+    }).select("quantity price");
 
-    const prices = await Product.find({ _id: { $in: productIds } }).select(
-      "price"
-    );
-
-    for (let i = 0; i < products.length; i++) {
-      if (products[i].quantity < quantities[i]) {
-        throw new Error(
-          `Insufficient quantity for product with ID ${productIds[i]}`
-        );
-      }
+    let prices = [];
+    // Check for invalid quantity
+    if (
+      quantities.some(
+        (quantity) => quantity <= 0 || quantity === "" || quantity === null
+      )
+    ) {
+      throw new Error(
+        "Quantity can not be less than or equal to 0, empty or null!"
+      );
     }
 
-    for (let i = 0; i < products.length; i++) {
+    for (let i = 0; i < productIds.length; i++) {
+      let dbQuantities = priceAndQuantity[i].quantity;
+      let dbPrices = priceAndQuantity[i].price;
+
+      console.log("Ordered: " + quantities[i]);
+      console.log("From DB: " + dbQuantities);
+
+      prices.push(dbPrices);
+
+      // verificare stoc
+      if (dbQuantities - quantities[i] < 0) {
+        throw new Error("Not enough quantity available.");
+      }
       await Product.findByIdAndUpdate(productIds[i], {
         $inc: { quantity: -quantities[i] },
       });
     }
-    // as putea sa fac cu .create() ca e mai eficient
+
     const productOrder = new ProductOrders({
       productIds,
       quantities,
@@ -47,7 +57,7 @@ const postProductOrder = async (req, res) => {
 
     await productOrder.save();
 
-    res.redirect("/payment");
+    res.status(200).send(productOrder);
   } catch (error) {
     res.status(400).json({ Error: error.message });
   }

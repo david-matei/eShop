@@ -26,7 +26,7 @@ const refreshAccessToken = async (req, res) => {
     ok: true,
     accessToken: accessToken(
       { userId: user._id, isAdmin: user.isAdmin },
-      "15m"
+      "15d"
     ),
   });
 };

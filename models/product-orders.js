@@ -21,6 +21,10 @@ const productOrders = new Schema(
       ref: "User",
       required: true,
     },
+    prices: {
+      type: Array,
+      required: true,
+    },
   },
   {
     timestamps: true,

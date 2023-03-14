@@ -32,11 +32,11 @@ app.use("/api", ordersRouter);
 app.use("/api", adminRouter);
 app.use("/api", refreshToken);
 app.use("/api", payment);
-app.get("/api/login", (_req, res) => {
-  res.send("LOGIN PAGE BROTHER");
-});
 app.get("/api", (req, res) => {
   res.send("Welcome!");
+});
+app.get("/api/payment", (req, res) => {
+  res.send("Pay up!");
 });
 const port = process.env.PORT;
 
