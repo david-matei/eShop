@@ -16,7 +16,7 @@ const productOrdersRouter = require("./routes/product-orders");
 const ordersRouter = require("./routes/orders");
 const adminRouter = require("./routes/administrator");
 const refreshToken = require("./routes/refresh-token");
-const payment = require("./routes/payments");
+const payment = require("./routes/payment");
 
 app.use(cookieParser());
 app.use(express.json());

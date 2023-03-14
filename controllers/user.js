@@ -123,7 +123,7 @@ const login = async (req, res) => {
       // deci trimit acest access token catre client ca acesta sa il posteze in
       // authorization header ca sa imi pot folosi middleware-ul sa vad daca e bun tokenul
       accessToken: accessToken(
-        { userId: user._id, isAdmin: user.isAdmin },
+        { userId: user._id, isAdmin: user.isAdmin, email: user.email },
         "15m"
       ),
     });

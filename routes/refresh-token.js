@@ -24,8 +24,9 @@ const refreshAccessToken = async (req, res) => {
   }
   return res.json({
     ok: true,
+    // pentru a putea lucra linistit am setat ca acest token sa ramana valabil 15 zile :)
     accessToken: accessToken(
-      { userId: user._id, isAdmin: user.isAdmin },
+      { userId: user._id, isAdmin: user.isAdmin, email: user.email },
       "15d"
     ),
   });

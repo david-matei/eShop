@@ -25,6 +25,13 @@ const productOrders = new Schema(
       type: Array,
       required: true,
     },
+    payed: {
+      type: Boolean,
+      default: false,
+    },
+    totalPrice: {
+      type: Number,
+    },
   },
   {
     timestamps: true,
