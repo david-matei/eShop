@@ -35,9 +35,6 @@ app.use("/api", payment);
 app.get("/api", (req, res) => {
   res.send("Welcome!");
 });
-app.get("/api/payment", (req, res) => {
-  res.send("Pay up!");
-});
 const port = process.env.PORT;
 
 const start = async () => {

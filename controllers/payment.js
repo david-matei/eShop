@@ -29,6 +29,7 @@ const payment = async (req, res) => {
     await Payment.create({
       userId: req.user.userId,
       totalAmount: totalPrice,
+      completed: true,
     });
   } catch (error) {
     res.json({ Error: error.message });

@@ -6,10 +6,6 @@ const orderSchema = new Schema({
     type: mongoose.Schema.Types.ObjectId,
     required: true,
     unique: true,
-  }, // customerId ca sa faca legatura sa stie de la ce customer e comanda
-  customerId: {
-    type: mongoose.Schema.Types.ObjectId,
-    required: true,
   },
   date: {
     type: Date,

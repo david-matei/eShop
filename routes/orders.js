@@ -5,13 +5,13 @@ const { verifyToken, adminCheck } = require("../middleware/JWT&Admin");
 
 const {
   getAllOrders,
-  postOrder,
   updateOrder,
   deleteOrder,
   getSingleOrder,
 } = require("../controllers/orders");
 
-router.post("/orders/:productOrderId", verifyToken, postOrder);
+//un nou order va fi creat automat in controllers/product-orders in functia "postProductOrders"
+//din cauza asta nu exista ruta pentru a crea un nou product order
 router.get("/orders", verifyToken, getAllOrders);
 router.get("/orders/:orderId", verifyToken, getSingleOrder);
 

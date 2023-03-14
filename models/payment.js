@@ -10,7 +10,6 @@ const paymentSchema = new Schema(
     },
     completed: {
       type: Boolean,
-      default: false,
     },
     totalAmount: {
       type: Number,

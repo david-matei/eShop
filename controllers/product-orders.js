@@ -1,6 +1,6 @@
 const ProductOrders = require("../models/product-orders");
 const Product = require("../models/product");
-
+const Orders = require("../models/orders");
 // to check if the user ID from the params matches the user ID from the payload of the JWT TOKEN
 // that is stored in the req.user object I already made a middleware that checks for that and also checks
 // the token for presence and validity
@@ -51,12 +51,19 @@ const postProductOrder = async (req, res) => {
       userId: req.user.userId,
       totalPrice,
     });
-
     await productOrder.save();
+    const order = await Orders.create({
+      productOrderId: productOrder._id,
+      totalAmount: totalPrice,
+      userId: req.user.userId,
+    });
     // this will redirect you to the payment page.
-    res.send(
-      "Order was successful and you will be redirected to the payment page."
-    );
+    res.json({
+      message:
+        "Order was successful and you will be redirected to the payment page.",
+      "product order": productOrder,
+      "new order": order,
+    });
   } catch (error) {
     res.status(400).json({ Error: error.message });
   }
