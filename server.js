@@ -17,6 +17,7 @@ const ordersRouter = require("./routes/orders");
 const adminRouter = require("./routes/administrator");
 const refreshToken = require("./routes/refresh-token");
 const payment = require("./routes/payment");
+const search = require("./routes/search");
 
 app.use(cookieParser());
 app.use(express.json());
@@ -32,6 +33,7 @@ app.use("/api", ordersRouter);
 app.use("/api", adminRouter);
 app.use("/api", refreshToken);
 app.use("/api", payment);
+app.use("/api", search);
 app.get("/api", (req, res) => {
   res.send("Welcome!");
 });

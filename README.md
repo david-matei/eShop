@@ -23,11 +23,12 @@ Read documentation !COMING SOON -> [here]()
 - Sign up or create accounts then sign in, log out.
 - Verify their email.
 - Edit their information.
+- Search products by keywords and filter results. Results will be paginated, 10 products/page.
 - Get list of available products for sale and their details.
-- Search for a particular product.
+- Search for a particular product by id.
 - Get products by categories.
 - See product reviews/See by rating.
-- Place orders and make online payments to purchase products. (coming soon!)
+- Place orders and make online payments to purchase products.
 - Others...
 
 ### Admin is able to:
