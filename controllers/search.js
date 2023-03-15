@@ -16,7 +16,7 @@ const searchForProducts = async (req, res) => {
     // 10 produse pe pagina
     const limit = req.query.limit ? parseInt(req.query.limit) : 10;
     // daca sunt de exemplu pe pagina 3, voi arata itemele cu index-ul 3-1*10 deci de la 20-29
-    // 20-29 pentru ca e limita de 10 produse pe pagina
+    // 20-29 pentru ca e limita de 10 produse pe pagina.
     const startIndex = (page - 1) * limit;
 
     const documents = await Product.find({

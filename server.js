@@ -34,6 +34,7 @@ app.use("/api", adminRouter);
 app.use("/api", refreshToken);
 app.use("/api", payment);
 app.use("/api", search);
+
 app.get("/api", (req, res) => {
   res.send("Welcome!");
 });
