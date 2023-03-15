@@ -27,7 +27,7 @@ Read documentation !COMING SOON -> [here]()
 - Search for a particular product.
 - Get products by categories.
 - See product reviews/See by rating.
-- Place orders and make online payments to purchase products. (coming soon!)
+- Place orders and make online payments to purchase products.
 - Others...
 
 ### Admin is able to:
