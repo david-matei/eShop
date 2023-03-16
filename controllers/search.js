@@ -2,6 +2,7 @@ const Product = require("../models/product");
 
 const searchForProducts = async (req, res) => {
   try {
+    const sort = req.query.sort_by;
     const toBeSearched = req.query.search.trim();
     if (toBeSearched.length < 3) {
       throw new Error("Search query must be at least 3 characters long.");
@@ -27,10 +28,28 @@ const searchForProducts = async (req, res) => {
     if (documents.length === 0) {
       throw new Error(" There are no products that match your description! ");
     }
+    if (sort === "descending") {
+      documents.sort((obiect1, obiect2) => {
+        return obiect2.price - obiect1.price;
+      });
+    } else if (sort === "ascending") {
+      documents.sort((obiect1, obiect2) => {
+        return obiect1.price - obiect2.price;
+      });
+    }
+    if (sort === "oldest-first") {
+      documents.sort((object1, object2) => {
+        return new Date(object1.createdAt) - new Date(object2.createdAt);
+      });
+    } else if (sort === "newest-first") {
+      documents.sort((object1, object2) => {
+        return new Date(object2.createdAt) - new Date(object1.createdAt);
+      });
+    }
     res.status(200).json({
       ok: true,
       results: documents,
-      "Number of documents found": totalCount,
+      "Number of documents found: ": totalCount,
     });
   } catch (error) {
     res.status(500).json({ Error: error.message });
