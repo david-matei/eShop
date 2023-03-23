@@ -47,6 +47,7 @@ const searchForProducts = async (req, res) => {
       });
     }
     res.status(200).json({
+      message: "OK",
       ok: true,
       results: documents,
       "Number of documents found: ": totalCount,

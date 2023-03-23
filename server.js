@@ -3,6 +3,12 @@ const mongoose = require(`mongoose`);
 const dotenv = require("dotenv");
 const app = express();
 const cookieParser = require("cookie-parser");
+const path = require("path");
+const http = require("http");
+const server = http.createServer(app);
+const socketio = require("socket.io");
+const io = socketio(server);
+
 mongoose.set("strictQuery", false);
 dotenv.config();
 
@@ -18,6 +24,7 @@ const adminRouter = require("./routes/administrator");
 const refreshToken = require("./routes/refresh-token");
 const payment = require("./routes/payment");
 const search = require("./routes/search");
+const chat = require("./controllers/artificial-intelligence");
 
 app.use(cookieParser());
 app.use(express.json());
@@ -34,6 +41,9 @@ app.use("/api", adminRouter);
 app.use("/api", refreshToken);
 app.use("/api", payment);
 app.use("/api", search);
+app.get("/api/chat", (req, res) => {
+  chat(io, req, res);
+});
 
 app.get("/api", (req, res) => {
   res.send("Welcome!");
@@ -43,7 +53,7 @@ const port = process.env.PORT;
 const start = async () => {
   try {
     await mongoose.connect(process.env.MONGO_URI);
-    app.listen(port, () =>
+    server.listen(port, () =>
       console.log(`Server is listening on port ${port}...`)
     );
   } catch (error) {

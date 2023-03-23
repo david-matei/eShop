@@ -10,7 +10,7 @@ Read documentation !COMING SOON -> [here]()
 - Clone the repo.
 - Run `npm install` to install dependencies.
 - input environment variables for `MONGO_URI`, `PORT`, `JWT_SECRET`, `REFRESH_TOKEN`, `MAIL_USERNAME`, `MAIL_PASSWORD`, `OAUTH_CLIENTID`,
-  `OAUTH_CLIENT_SECRET`, `OAUTH_REFRESH_TOKEN`, `STRIPE_SECRET_KEY`, `STRIPE_PUBLISHABLE_KEY`
+  `OAUTH_CLIENT_SECRET`, `OAUTH_REFRESH_TOKEN`, `STRIPE_SECRET_KEY`, `STRIPE_PUBLISHABLE_KEY`, `GPT_KEY`
 - enter `npm run dev` in the terminal to start up the development server.
 
 ## Technology
@@ -20,6 +20,7 @@ Read documentation !COMING SOON -> [here]()
 
 ### Users are able to:
 
+- Get suggestions in real time from the artificial intelligence service using websockets.
 - Sign up or create accounts then sign in, log out.
 - Verify their email.
 - Edit their information.
